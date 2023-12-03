@@ -242,9 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203fc7afa0f25843be50808db7ccf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Floor: 1
-  Area: 1
-  FloorOneStartingRooms: []
+  FloorOneStartingRooms:
+  - {fileID: 6415498099262076319, guid: ca675386d7bdfe7438fe0b86d4d9c6b5, type: 3}
+  - {fileID: 6415498099262076319, guid: ca675386d7bdfe7438fe0b86d4d9c6b5, type: 3}
   FloorOneRooms: []
   FloorTwoStartingRooms: []
   FloorTwoRooms: []

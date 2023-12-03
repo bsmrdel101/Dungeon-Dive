@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class DungeonManager : MonoBehaviour
 {
-    [Header("Progression")]
-    public int Floor = 1;
-    public int Area = 1;
-
     [Header("Rooms")]
     public GameObject[] FloorOneStartingRooms;
     public GameObject[] FloorOneRooms;
@@ -19,11 +15,9 @@ public class DungeonManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        GenerateDungeonArea(DatabaseManager.Save.Floor);
     }
 
-    // Takes in two tile positions
-    // Returns the distance between the tiles
     public int DistanceBetweenTwoPoints(Transform pos1, Transform pos2)
     {
         int xDiff = (int)Mathf.Abs(pos1.position.x - pos2.position.x);
@@ -35,11 +29,16 @@ public class DungeonManager : MonoBehaviour
     // Returns the Tile component
     public Tile GetTileFromCoords(float x, float y)
     {
-        foreach (Tile tile in GameObject.FindObjectsOfType<Tile>())
+        foreach (Tile tile in FindObjectsOfType<Tile>())
         {
             if (tile.transform.position.x == x && tile.transform.position.y == y)
                 return tile;
         }
         return null;
+    }
+
+    private void GenerateDungeonArea(int floor)
+    {
+
     }
 }

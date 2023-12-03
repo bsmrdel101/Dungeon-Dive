@@ -14,7 +14,7 @@ public class AreaController : MonoBehaviour
 
     private void Start()
     {
-        _dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
+        _dungeonManager = FindObjectOfType<DungeonManager>();
         LoadNewArea();
     }
 
@@ -28,7 +28,7 @@ public class AreaController : MonoBehaviour
     // Get random room and set player spawn points
     private void GetStartingRoomValues()
     {
-        _startingRoom = GetRandomStartingRoomFromFloor(_dungeonManager.Floor);
+        _startingRoom = GetRandomStartingRoomFromFloor(DatabaseManager.Save.Floor);
         _playerSpawnPoints = _startingRoom.PlayerSpawnPoints;
     }
 
@@ -44,7 +44,7 @@ public class AreaController : MonoBehaviour
         for (int i = 0; i < amountOfRooms; i++)
         {
             // Get a random room from this floor
-            Room randomRoom = GetRandomRoomFromFloor(_dungeonManager.Floor);
+            Room randomRoom = GetRandomRoomFromFloor(DatabaseManager.Save.Floor);
             // Spawn the room and connect it to the previous room
             GameObject roomObj = Instantiate(randomRoom.gameObject, prevRoom.TopRoomConnection.position, Quaternion.identity);
             Room newRoom = roomObj.GetComponent<Room>();
